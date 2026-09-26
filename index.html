@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARZAN | Official Portfolio & Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: #141419;
+            --accent: #00f0ff;
+            --accent-pink: #ff0055;
+            --text-main: #f0f0f5;
+            --text-muted: #8e8e9f;
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAV */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: var(--card-bg);
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active, .lang-btn:hover {
+            background: var(--accent);
+            color: #000;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 5% 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .hero-text h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .location-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--accent);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            object-fit: cover;
+        }
+
+        /* SERVICES SECTION */
+        .section {
+            padding: 100px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 35px 25px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CONTACT SECTION */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(20,20,25,1) 0%, rgba(30,30,40,1) 100%);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 50px 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-box h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 140px;
+            }
+            .hero-text h1 { font-size: 2.8rem; }
+            .location-tags, .btn-group { justify-content: center; }
+            .hero-image img { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">TARZAN</div>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('vi')">VI</button>
+            <button class="lang-btn" onclick="setLang('zh')">ZH</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1 id="hero-title">TARZAN <span>LIFESTYLE</span></h1>
+            <p class="hero-subtitle" id="hero-sub">Модель • Инфлюенсер • Фитнес-Тренер • Гид по ЮВА • Дейтинг-Консультант</p>
+            
+            <div class="location-tags">
+                <span class="tag">📍 Saigon</span>
+                <span class="tag">📍 Bangkok</span>
+                <span class="tag">📍 Bali</span>
+                <span class="tag">📍 Cambodia</span>
+            </div>
+
+            <div class="btn-group">
+                <a href="https://t.me/your_telegram" target="_blank" class="btn btn-primary" id="btn-book">Заказать услугу</a>
+                <a href="#services" class="btn btn-secondary" id="btn-services">Услуги</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Укажите путь к вашей главной фотографии -->
+            <img src="13050.jpg" alt="Tarzan Photo">
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="services">
+        <h2 class="section-title" id="services-title">Мои Услуги</h2>
+        <div class="services-grid">
+            
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3 id="s1-title">Modeling & Influencer</h3>
+                <p id="s1-desc">Рекламные интеграции, съемки для брендов одежды, лукбуков и кампейнов по всей Азии.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌴</div>
+                <h3 id="s2-title">Авторские Туры и Гид</h3>
+                <p id="s2-desc">Эксклюзивные инсайдерские маршруты по Хошимину, Бангкоку, Бали и Камбодже. Небанальный отдых и локальный опыт.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🏋️‍♂️</div>
+                <h3 id="s3-title">Фитнес-Коучинг</h3>
+                <p id="s3-desc">Персональные тренировки и онлайн-сопровождение. Коррекция фигуры, составление плана питания и тренировок.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">💘</div>
+                <h3 id="s4-title">Дейтинг-Апп Консалтинг</h3>
+                <p id="s4-desc">Полный аудит и упаковка профилей Tinder/Bumble. Фотосессия, био и стратегия для кратного роста мэтчей.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section">
+        <div class="contact-box">
+            <h2 id="contact-title">Готовы к сотрудничеству?</h2>
+            <p id="contact-desc">Свяжитесь со мной напрямую для бронирования туров, тренировок или коммерческих съемок.</p>
+            <div class="social-links">
+                <a href="https://t.me/your_telegram" target="_blank" class="btn btn-primary">Telegram</a>
+                <a href="https://wa.me/your_whatsapp" target="_blank" class="btn btn-secondary">WhatsApp</a>
+                <a href="https://instagram.com/your_instagram" target="_blank" class="btn btn-secondary">Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MULTI-LANGUAGE SCRIPT -->
+    <script>
+        const translations = {
+            ru: {
+                sub: "Модель • Инфлюенсер • Фитнес-Тренер • Гид по ЮВА • Дейтинг-Консультант",
+                book: "Заказать услугу",
+                servicesBtn: "Услуги",
+                servicesTitle: "Мои Услуги",
+                s1Title: "Modeling & Influencer",
+                s1Desc: "Рекламные интеграции, съемки для брендов одежды, лукбуков и кампейнов по всей Азии.",
+                s2Title: "Авторские Туры и Гид",
+                s2Desc: "Эксклюзивные инсайдерские маршруты по Хошимину, Бангкоку, Бали и Камбодже. Локальный опыт.",
+                s3Title: "Фитнес-Коучинг",
+                s3Desc: "Персональные тренировки и онлайн-сопровождение. Коррекция фигуры, план питания и функциональный тренинг.",
+                s4Title: "Дейтинг-Консалтинг",
+                s4Desc: "Полный аудит профилей Tinder/Bumble. Фотосессия, био и стратегия для кратного роста мэтчей.",
+                contactTitle: "Готовы к сотрудничеству?",
+                contactDesc: "Свяжитесь со мной напрямую для бронирования туров, тренировок или коммерческих съемок."
+            },
+            en: {
+                sub: "Model • Influencer • Fitness Coach • SE Asia Guide • Dating Consultant",
+                book: "Book a Service",
+                servicesBtn: "Services",
+                servicesTitle: "My Services",
+                s1Title: "Modeling & Influencer",
+                s1Desc: "Brand collaborations, commercial shoots, lookbooks, and influencer marketing across Asia.",
+                s2Title: "Custom Tours & Guide",
+                s2Desc: "Exclusive insider tours in Saigon, Bangkok, Bali, and Cambodia. Authentic local experience.",
+                s3Title: "Fitness Coaching",
+                s3Desc: "Personal training and online coaching. Custom workout programs, nutrition, and body transformation.",
+                s4Title: "Dating App Consulting",
+                s4Desc: "Complete Tinder/Bumble profile optimization. Photo shoots, bio strategy, and higher match rates.",
+                contactTitle: "Let's Work Together",
+                contactDesc: "Reach out directly for tour bookings, fitness sessions, or media collaborations."
+            },
+            vi: {
+                sub: "Người Mẫu • Influencer • HLV Thể Hình • Hướng Dẫn Viên • Tư Vấn Dating",
+                book: "Đặt Dịch Vụ",
+                servicesBtn: "Dịch Vụ",
+                servicesTitle: "Dịch Vụ Của Tôi",
+                s1Title: "Người Mẫu & Influencer",
+                s1Desc: "Hợp tác quảng cáo thương hiệu, chụp ảnh fashion, lookbook và truyền thông tại Châu Á.",
+                s2Title: "Tour Du Lịch Trải Nghiệm",
+                s2Desc: "Khám phá Sài Gòn, Bangkok, Bali và Campuchia theo phong cách riêng biệt, độc đáo.",
+                s3Title: "Huấn Luyện Viên Thể Hình",
+                s3Desc: "Đào tạo cá nhân và online. Lập kế hoạch tập luyện, dinh dưỡng và thay đổi vóc dáng.",
+                s4Title: "Tư Vấn Hẹn Hò (Dating App)",
+                s4Desc: "Tối ưu hóa hồ sơ Tinder/Bumble. Chụp ảnh, viết bio và chiến lược tăng tỷ lệ match.",
+                contactTitle: "Sẵn Sàng Hợp Tác?",
+                contactDesc: "Liên hệ trực tiếp với tôi để đặt tour, tập luyện hoặc hợp tác truyền thông."
+            },
+            zh: {
+                sub: "模特 • 红人 • 健身教练 • 东南亚向导 • 约会顾问",
+                book: "预约服务",
+                servicesBtn: "服务项目",
+                servicesTitle: "服务项目",
+                s1Title: "模特与红人推广",
+                s1Desc: "品牌合作、商业拍摄、造型目录及全亚洲红人营销推广。",
+                s2Title: "私人定制导游",
+                s2Desc: "西贡、曼谷、巴厘岛和柬埔寨的深度独家深度游体验。",
+                s3Title: "健身指导",
+                s3Desc: "一对一私人训练与线上指导。定制健身计划、营养建议与身材塑造。",
+                s4Title: "约会软件咨询",
+                s4Desc: "Tinder/Bumble 个人资料全方位优化、形象拍摄与匹配率提升策略。",
+                contactTitle: "开始合作",
+                contactDesc: "欢迎直接与我联系，预约导游、健身课程或商业拍摄合作。"
+            }
+        };
+
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.getElementById('hero-sub').innerText = translations[lang].sub;
+            document.getElementById('btn-book').innerText = translations[lang].book;
+            document.getElementById('btn-services').innerText = translations[lang].servicesBtn;
+            document.getElementById('services-title').innerText = translations[lang].servicesTitle;
+            
+            document.getElementById('s1-title').innerText = translations[lang].s1Title;
+            document.getElementById('s1-desc').innerText = translations[lang].s1Desc;
+            
+            document.getElementById('s2-title').innerText = translations[lang].s2Title;
+            document.getElementById('s2-desc').innerText = translations[lang].s2Desc;
+            
+            document.getElementById('s3-title').innerText = translations[lang].s3Title;
+            document.getElementById('s3-desc').innerText = translations[lang].s3Desc;
+            
+            document.getElementById('s4-title').innerText = translations[lang].s4Title;
+            document.getElementById('s4-desc').innerText = translations[lang].s4Desc;
+            
+            document.getElementById('contact-title').innerText = translations[lang].contactTitle;
+            document.getElementById('contact-desc').innerText = translations[lang].contactDesc;
+        }
+    </script>
+</body>
+</html>
